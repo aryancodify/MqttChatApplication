@@ -17,15 +17,15 @@ public class Group {
 
 	@PrimaryKeyColumn(name="topicId",type=PrimaryKeyType.PARTITIONED,ordinal=0)
 	private String topicId;
-	@NotNull(message="")
-	@Size(min=1,message="")
+	@NotNull(message="{group.groupname.empty}")
+	@Size(min=1,message="{group.groupname.empty}")
 	@Column
 	private String groupName;
-	@NotNull(message="")
+	@NotNull(message="{group.members.empty}")
 	@Column
 	private Set<String> members = new HashSet<String>();
-	@NotNull
-	@Size(min=1,message="")
+	@NotNull(message="{group.groupowner.empty}")
+	@Size(min=1,message="{group.groupowner.empty}")
 	@Column
 	private String groupOwner;
 	@Transient
