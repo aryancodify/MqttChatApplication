@@ -3,7 +3,7 @@ package com.globallogic.mqtt.poc.beans;
  * 
  * @author aryan.singh
  *
- */
+ */ 
 public class Subscriber {
 	private String userId;
 	private String deviceToken;

@@ -19,3 +19,4 @@ public interface DeviceRepository extends CassandraRepository<Device> {
 	public String getDeviceTokenFromUserId(String userId);
 	
 }
+ 

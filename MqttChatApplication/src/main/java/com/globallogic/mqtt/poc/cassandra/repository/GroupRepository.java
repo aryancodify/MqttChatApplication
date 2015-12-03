@@ -16,3 +16,4 @@ public interface GroupRepository extends CassandraRepository<Group>{
 	public List<Group> getGroups();
 
 }
+ 

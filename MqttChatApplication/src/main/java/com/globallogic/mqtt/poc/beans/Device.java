@@ -10,7 +10,7 @@ import org.springframework.data.cassandra.mapping.Table;
 
 /**
  * 
- * @author aryan.singh
+ * @author aryan.singh 
  *	Template for Device Registration store
  */
 @Table(value="DeviceRegistrationStore")
