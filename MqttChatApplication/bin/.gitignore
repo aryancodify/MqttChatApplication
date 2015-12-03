@@ -1,0 +1,8 @@
+/ErrorMessages.properties
+/FinalServerCertificateAndKey.p12
+/PayloadMessages.properties
+/PushNotifications.properties
+/ValidationMessages.properties
+/application.properties
+/cassandra.properties
+/logback.xml
