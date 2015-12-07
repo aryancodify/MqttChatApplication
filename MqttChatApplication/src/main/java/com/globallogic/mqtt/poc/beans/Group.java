@@ -33,7 +33,7 @@ public class Group {
 	public Group(){
 		
 	}
-	Group(String topicId, String groupName, Set<String> members,
+	public Group(String topicId, String groupName, Set<String> members,
 			String groupOwner) {
 		super();
 		this.topicId = topicId;

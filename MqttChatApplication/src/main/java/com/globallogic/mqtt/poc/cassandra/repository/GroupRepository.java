@@ -14,6 +14,8 @@ public interface GroupRepository extends CassandraRepository<Group>{
 	
 	@Query("select * from groups")
 	public List<Group> getGroups();
-
+	
+	@Query("select * from groups where topicId = ?0 ALLOW FILTERING")
+	public Group getGroupBytopicId(String topicId);
 }
  
