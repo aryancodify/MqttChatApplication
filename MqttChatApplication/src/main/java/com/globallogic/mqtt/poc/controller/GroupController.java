@@ -2,6 +2,7 @@ package com.globallogic.mqtt.poc.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,7 +33,7 @@ public class GroupController {
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = "/create", headers = {
 			"Content-Type=application/json", "Accept=application/json" })
-	public GroupCreationResponse createGroup(@RequestBody final Group group) {
+	public GroupCreationResponse createGroup(@Validated @RequestBody final Group group) {
 		return groupService.saveGroup(group);
 	}
 }

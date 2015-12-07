@@ -1,3 +1,4 @@
 /DeviceRegistrationException.class
 /GroupCreationException.class
 /PushNotificationException.class
+/DeviceDeletionException.class

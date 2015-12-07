@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.globallogic.mqtt.poc.beans.Device;
 import com.globallogic.mqtt.poc.cassandra.repository.DeviceRepository;
 import com.globallogic.mqtt.poc.dao.DeviceDao;
+import com.globallogic.mqtt.poc.exceptions.DeviceDeletionException;
 import com.globallogic.mqtt.poc.exceptions.DeviceRegistrationException;
 @Repository
 public class DeviceDaoImpl implements DeviceDao{
@@ -29,6 +30,18 @@ public class DeviceDaoImpl implements DeviceDao{
 	public String getDeviceByUserId(String userId) {
 		String deviceToken=deviceRepository.getDeviceTokenFromUserId(userId);
 		return deviceToken;
+	}
+
+
+	@Override
+	public boolean deleteDevice(Device device) {
+		try{
+		deviceRepository.delete(device);
+		}
+		catch(Exception ex){
+			throw new DeviceDeletionException(device.getDeviceToken());
+		}
+		return true;
 	}
 	
 	

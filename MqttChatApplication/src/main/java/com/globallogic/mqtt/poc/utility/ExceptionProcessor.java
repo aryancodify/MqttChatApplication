@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.globallogic.mqtt.poc.exceptions.DeviceDeletionException;
 import com.globallogic.mqtt.poc.exceptions.DeviceRegistrationException;
 import com.globallogic.mqtt.poc.exceptions.GroupCreationException;
 import com.globallogic.mqtt.poc.exceptions.PushNotificationException;
@@ -61,6 +62,16 @@ public class ExceptionProcessor {
 				null, new Error("PNS1434", env.getProperty("PNS1434")), true);
 		logger.error(ex.getMessage(), ex);
 		return groupCreationResponse;
+	}
+	
+	@ExceptionHandler(DeviceDeletionException.class)
+	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+	@ResponseBody
+	public BaseResponse deletionFailed(HttpServletRequest req,DeviceDeletionException ex) {
+		Error error =new Error("DEV1475", env.getProperty("DEV1475"));
+		BaseResponse baseResponse = new BaseResponse(null, error, true);
+		logger.error(ex.getMessage(), ex);
+		return baseResponse;
 	}
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)

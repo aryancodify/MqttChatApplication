@@ -33,8 +33,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.output.TeeOutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 @Resource(type=Filter.class)
+@Component
 public class LoggingReqResFilter implements Filter {
 
 	
@@ -47,7 +49,6 @@ public class LoggingReqResFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,FilterChain chain) 
 				throws IOException, ServletException {
-		System.out.println("Intercepted the request");
 	try {
 		HttpServletRequest httpServletRequest = (HttpServletRequest)request;
 		HttpServletResponse httpServletResponse = (HttpServletResponse)response;

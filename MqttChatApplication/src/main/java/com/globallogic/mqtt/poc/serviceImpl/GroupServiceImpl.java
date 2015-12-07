@@ -52,7 +52,7 @@ public class GroupServiceImpl implements GroupService {
 		}
 		if (success) {
 			groupCreationResponse = new GroupCreationResponse(
-					new GroupCreationPayload(env.getProperty("group.success"),
+					new GroupCreationPayload(env.getProperty("group.creation.success"),
 							group.getTopicId()), null, false);
 		} else {
 			groupCreationResponse = new GroupCreationResponse(null, new Error(

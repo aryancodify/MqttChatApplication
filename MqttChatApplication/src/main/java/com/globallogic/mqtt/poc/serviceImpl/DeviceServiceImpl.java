@@ -41,4 +41,21 @@ public class DeviceServiceImpl implements DeviceService {
 		return deviceRegistrationResponse;
 	}
 
+	@Override
+	public DeviceRegistrationResponse deleteDevice(Device device) {
+		// TODO Auto-generated method stub
+		boolean success = false;
+		DeviceRegistrationResponse deviceRegistrationResponse = null;
+		success = deviceDao.deleteDevice(device);
+		if(success){
+			deviceRegistrationResponse = new DeviceRegistrationResponse(
+					new Payload(env.getProperty("device.deletion.success")),
+					null, false);
+		}else{
+			deviceRegistrationResponse = new DeviceRegistrationResponse(null,
+					new Error("DEV1475",env.getProperty("DEV1475")), true);
+		}
+		return deviceRegistrationResponse;
+	}
+
 }
