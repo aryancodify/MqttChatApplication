@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.globallogic.mqtt.poc.exceptions.DeviceDeletionException;
+import com.globallogic.mqtt.poc.exceptions.DeviceNotFoundException;
 import com.globallogic.mqtt.poc.exceptions.DeviceRegistrationException;
 import com.globallogic.mqtt.poc.exceptions.GroupCreationException;
+import com.globallogic.mqtt.poc.exceptions.GroupNotFoundException;
+import com.globallogic.mqtt.poc.exceptions.GroupUpdationException;
 import com.globallogic.mqtt.poc.exceptions.PushNotificationException;
 import com.globallogic.mqtt.poc.response.BaseResponse;
 import com.globallogic.mqtt.poc.response.DeviceRegistrationResponse;
@@ -69,6 +72,36 @@ public class ExceptionProcessor {
 	@ResponseBody
 	public BaseResponse deletionFailed(HttpServletRequest req,DeviceDeletionException ex) {
 		Error error =new Error("DEV1475", env.getProperty("DEV1475"));
+		BaseResponse baseResponse = new BaseResponse(null, error, true);
+		logger.error(ex.getMessage(), ex);
+		return baseResponse;
+	}
+	
+	@ExceptionHandler(DeviceNotFoundException.class)
+	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+	@ResponseBody
+	public BaseResponse deviceNotFound(HttpServletRequest req,DeviceNotFoundException ex) {
+		Error error =new Error("DEV4040", env.getProperty("DEV4040"));
+		BaseResponse baseResponse = new BaseResponse(null, error, true);
+		logger.error(ex.getMessage(), ex);
+		return baseResponse;
+	}
+	
+	@ExceptionHandler(GroupNotFoundException.class)
+	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+	@ResponseBody
+	public BaseResponse deletionFailed(HttpServletRequest req,GroupNotFoundException ex) {
+		Error error =new Error("GRO4040", env.getProperty("GRO4040"));
+		BaseResponse baseResponse = new BaseResponse(null, error, true);
+		logger.error(ex.getMessage(), ex);
+		return baseResponse;
+	}
+	
+	@ExceptionHandler(GroupUpdationException.class)
+	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+	@ResponseBody
+	public BaseResponse groupUpdationFailed(HttpServletRequest req,GroupUpdationException ex) {
+		Error error =new Error("GRO1313", env.getProperty("GRO1313"));
 		BaseResponse baseResponse = new BaseResponse(null, error, true);
 		logger.error(ex.getMessage(), ex);
 		return baseResponse;
