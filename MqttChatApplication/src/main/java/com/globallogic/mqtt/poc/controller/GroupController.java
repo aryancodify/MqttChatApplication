@@ -37,7 +37,11 @@ public class GroupController {
 	public GroupCreationResponse createGroup(@Validated @RequestBody final Group group) {
 		return groupService.saveGroup(group);
 	}
-	
+	/**
+	 * 
+	 * @param groupOperationsResource
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.POST, value = "/update", headers = {
 			"Content-Type=application/json", "Accept=application/json" })
 	public GroupCreationResponse updateGroup(@Validated @RequestBody final GroupOperationsResource groupOperationsResource){

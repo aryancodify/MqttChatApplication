@@ -34,7 +34,11 @@ public class DeviceController {
 			@Validated @RequestBody final Device device) {
 		return deviceService.saveDevice(device);
 	}
-	
+	/**
+	 * 
+	 * @param device
+	 * @return
+	 */
 	@RequestMapping(value = "/registration", method = RequestMethod.DELETE, headers = {"Content-Type=application/json", "Accept=application/json"})
 	public DeviceRegistrationResponse removeDevice(@Validated @RequestBody final Device device){
 		return deviceService.deleteDevice(device);
